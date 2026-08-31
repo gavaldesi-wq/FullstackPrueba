@@ -1,21 +1,17 @@
 
-/* Colores principales*/
-
 :root{
-  --fondo-principal:  #0a0e17; /* fondo general de la página (casi negro) */
-  --fondo-secundario: #0d1420; /* fondo un poco más claro (navbar, footer) */
-  --fondo-tarjeta:    #0c1220; /* fondo de las tarjetas de producto */
-  --cyan:             #22e0f0; /* el color celeste/cyan que se repite en todo */
-  --cyan-brillo:      rgba(34, 224, 240, .35); /* mismo cyan pero transparente, para el "brillo" */
-  --texto-claro:      #e8f4f8; /* color del texto principal (casi blanco) */
-  --texto-apagado:    #8a9ba8; /* color de texto secundario */
-  --borde-cyan:       rgba(34, 224, 240, .35); /* color de los bordes cyan */
+  --fondo-principal:  #0a0e17; 
+  --fondo-secundario: #0d1420; 
+  --fondo-tarjeta:    #0c1220; 
+  --cyan:             #22e0f0; 
+  --cyan-brillo:      rgba(34, 224, 240, .35); 
+  --texto-claro:      #e8f4f8; 
+  --texto-apagado:    #8a9ba8; 
+  --borde-cyan:       rgba(34, 224, 240, .35); 
 }
 
 
-/* -----------------------------------------------------------
-   2) ESTILOS GENERALES DE LA PÁGINA
------------------------------------------------------------ */
+/* estilos generales */
 body{
   background: var(--fondo-principal);
   color: var(--texto-claro);
@@ -25,21 +21,16 @@ body{
 a{ text-decoration: none; }
 
 
-/* -----------------------------------------------------------
-   3) BARRA SUPERIOR CHICA (Iniciar sesión / Registrar usuario)
------------------------------------------------------------ */
-.barra-superior{
-  background: var(--fondo-secundario);
-  font-size: .8rem;
+/*Barra superior, inicio de sesion y registro de usaurio */
+.enlaces-usuario a {
   color: var(--texto-apagado);
+  font-size: 0.85rem;
+  font-weight: 500;
 }
-.barra-superior a{ color: var(--texto-apagado); margin-left: 1rem; }
-.barra-superior a:hover{ color: var(--cyan); }
-
-
-/* -----------------------------------------------------------
-   4) NAVEGACIÓN PRINCIPAL (logo, links, buscador, carrito)
------------------------------------------------------------ */
+.enlaces-usuario a:hover {
+  color: var(--cyan);
+}
+/* Logos, links, etc*/
 .barra-navegacion{
   background: var(--fondo-secundario);
   border-bottom: 1px solid var(--borde-cyan);
@@ -100,7 +91,7 @@ a{ text-decoration: none; }
   color: #06111a;
 }
 
-/* Menú desplegable "Productos" */
+/* El menu desplegable donde tan los productos */
 .menu-desplegable{
   background: var(--fondo-tarjeta);
   border: 1px solid var(--borde-cyan);
@@ -118,13 +109,8 @@ a{ text-decoration: none; }
 }
 
 
-/* -----------------------------------------------------------
-   5) BANNER PRINCIPAL (RTX 40-Series)
------------------------------------------------------------ */
+/* el Banner principal */
 .banner-principal{
-  background:
-    linear-gradient(90deg, rgba(10,14,23,.95) 30%, rgba(10,14,23,.4) 100%),
-    url('https://placehold.co/1200x400/0a0e17/13202c?text=RTX+40-SERIES');
   background-size: cover;
   background-position: center;
   border: 1px solid var(--borde-cyan);
@@ -139,6 +125,23 @@ a{ text-decoration: none; }
   font-weight: 800;
   font-size: 2.2rem;
 }
+
+.banner-principal > div {
+  width: 100%;
+}
+
+.banner-principal img{
+  display: block;
+  margin: 2rem auto 0 auto;
+  max-width: 100%;
+  width: 900px;
+  height: auto;
+  border: 2px solid var(--borde-cyan);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--cyan-brillo);
+}
+
+
 .banner-principal .destacado{
   color: var(--cyan);
   text-shadow: 0 0 14px var(--cyan-brillo);
@@ -156,14 +159,12 @@ a{ text-decoration: none; }
 }
 
 
-/* -----------------------------------------------------------
-   6) SECCIÓN "PRODUCTOS DESTACADOS"
------------------------------------------------------------ */
+/* Productos Destacados */
 .titulo-seccion{
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 3px;
   text-align: center;
-  margin: 3rem 0 2rem;
+  margin: 50px;
 }
 
 
@@ -198,31 +199,8 @@ a{ text-decoration: none; }
 }
 
 
-/* -----------------------------------------------------------
-   7) PAGINACIÓN (los numeritos 1 2 3 4 5)
-   Estas clases (.pagination, .page-link, .page-item) son de
-   Bootstrap, así que solo les cambiamos el color, no el nombre.
------------------------------------------------------------ */
-.pagination .page-link{
-  background: var(--fondo-tarjeta);
-  border: 1px solid var(--borde-cyan);
-  color: var(--texto-claro);
-  margin: 0 3px;
-  border-radius: 8px;
-}
-.pagination .page-item.active .page-link{
-  background: var(--cyan);
-  border-color: var(--cyan);
-  color: #06111a;
-}
-.pagination .page-link:hover{
-  color: var(--cyan);
-}
 
-
-/* -----------------------------------------------------------
-   8) PIE DE PÁGINA (footer)
------------------------------------------------------------ */
+/* La parte de abajo de la pagina*/
 footer{
   background: var(--fondo-secundario);
   border-top: 1px solid var(--borde-cyan);
