@@ -1,0 +1,241 @@
+
+/* Colores principales*/
+
+:root{
+  --fondo-principal:  #0a0e17; /* fondo general de la página (casi negro) */
+  --fondo-secundario: #0d1420; /* fondo un poco más claro (navbar, footer) */
+  --fondo-tarjeta:    #0c1220; /* fondo de las tarjetas de producto */
+  --cyan:             #22e0f0; /* el color celeste/cyan que se repite en todo */
+  --cyan-brillo:      rgba(34, 224, 240, .35); /* mismo cyan pero transparente, para el "brillo" */
+  --texto-claro:      #e8f4f8; /* color del texto principal (casi blanco) */
+  --texto-apagado:    #8a9ba8; /* color de texto secundario */
+  --borde-cyan:       rgba(34, 224, 240, .35); /* color de los bordes cyan */
+}
+
+
+/* -----------------------------------------------------------
+   2) ESTILOS GENERALES DE LA PÁGINA
+----------------------------------------------------------- */
+body{
+  background: var(--fondo-principal);
+  color: var(--texto-claro);
+  font-family: 'Inter', sans-serif;
+}
+
+a{ text-decoration: none; }
+
+
+/* -----------------------------------------------------------
+   3) BARRA SUPERIOR CHICA (Iniciar sesión / Registrar usuario)
+----------------------------------------------------------- */
+.barra-superior{
+  background: var(--fondo-secundario);
+  font-size: .8rem;
+  color: var(--texto-apagado);
+}
+.barra-superior a{ color: var(--texto-apagado); margin-left: 1rem; }
+.barra-superior a:hover{ color: var(--cyan); }
+
+
+/* -----------------------------------------------------------
+   4) NAVEGACIÓN PRINCIPAL (logo, links, buscador, carrito)
+----------------------------------------------------------- */
+.barra-navegacion{
+  background: var(--fondo-secundario);
+  border-bottom: 1px solid var(--borde-cyan);
+}
+
+.enlace-nav{
+  color: var(--texto-claro) !important;
+  font-weight: 500;
+  margin-right: 1.2rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+.enlace-nav:hover,
+.enlace-nav.active{
+  color: var(--cyan) !important;
+  border-bottom: 2px solid var(--cyan);
+}
+
+.texto-logo{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+}
+.texto-logo .destacado{
+  color: var(--cyan);
+  text-shadow: 0 0 12px var(--cyan-brillo);
+}
+.subtitulo-logo{
+  font-size: .6rem;
+  letter-spacing: 4px;
+  color: var(--texto-apagado);
+  text-align: center;
+  display: block;
+}
+
+.campo-busqueda{
+  background: var(--fondo-principal);
+  border: 1px solid var(--borde-cyan);
+  color: var(--texto-claro);
+  max-width: 200px;
+}
+.campo-busqueda::placeholder{ color: var(--texto-apagado); }
+.campo-busqueda:focus{
+  background: var(--fondo-principal);
+  color: var(--texto-claro);
+  box-shadow: 0 0 0 .2rem var(--cyan-brillo);
+  border-color: var(--cyan);
+}
+
+.enlace-carrito{
+  color: var(--texto-claro);
+  position: relative;
+}
+.enlace-carrito .badge{
+  background: var(--cyan);
+  color: #06111a;
+}
+
+/* Menú desplegable "Productos" */
+.menu-desplegable{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+}
+.menu-desplegable .dropdown-item{
+  color: var(--texto-claro);
+}
+.menu-desplegable .dropdown-item:hover,
+.menu-desplegable .dropdown-item:focus{
+  background: var(--cyan-brillo);
+  color: var(--cyan);
+}
+.menu-desplegable .dropdown-divider{
+  border-color: var(--borde-cyan);
+}
+
+
+/* -----------------------------------------------------------
+   5) BANNER PRINCIPAL (RTX 40-Series)
+----------------------------------------------------------- */
+.banner-principal{
+  background:
+    linear-gradient(90deg, rgba(10,14,23,.95) 30%, rgba(10,14,23,.4) 100%),
+    url('https://placehold.co/1200x400/0a0e17/13202c?text=RTX+40-SERIES');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--borde-cyan);
+  border-radius: 14px;
+  padding: 3rem 2.5rem;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+}
+.banner-principal h1{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+.banner-principal .destacado{
+  color: var(--cyan);
+  text-shadow: 0 0 14px var(--cyan-brillo);
+}
+
+.boton-cyan{
+  background: var(--cyan);
+  color: #06111a;
+  font-weight: 700;
+  border: none;
+}
+.boton-cyan:hover{
+  color: #06111a;
+  box-shadow: 0 0 20px var(--cyan-brillo);
+}
+
+
+/* -----------------------------------------------------------
+   6) SECCIÓN "PRODUCTOS DESTACADOS"
+----------------------------------------------------------- */
+.titulo-seccion{
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 3rem 0 2rem;
+}
+
+
+.tarjeta-producto{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  border-radius: 10px;
+  height: 100%;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.tarjeta-producto:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 22px var(--cyan-brillo);
+}
+.tarjeta-producto img{
+  background: white;
+  border-radius: 10px 10px 0 0;
+  padding: 1rem;
+  height: 160px;
+  object-fit: contain;
+  width: 100%;
+}
+.tarjeta-producto .producto{
+  font-size: .95rem;
+  font-weight: 600;
+  min-height: 48px;
+}
+.tarjeta-producto .precio{
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+
+/* -----------------------------------------------------------
+   7) PAGINACIÓN (los numeritos 1 2 3 4 5)
+   Estas clases (.pagination, .page-link, .page-item) son de
+   Bootstrap, así que solo les cambiamos el color, no el nombre.
+----------------------------------------------------------- */
+.pagination .page-link{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  color: var(--texto-claro);
+  margin: 0 3px;
+  border-radius: 8px;
+}
+.pagination .page-item.active .page-link{
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #06111a;
+}
+.pagination .page-link:hover{
+  color: var(--cyan);
+}
+
+
+/* -----------------------------------------------------------
+   8) PIE DE PÁGINA (footer)
+----------------------------------------------------------- */
+footer{
+  background: var(--fondo-secundario);
+  border-top: 1px solid var(--borde-cyan);
+  margin-top: 4rem;
+}
+footer h6{
+  color: var(--texto-claro);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+footer a{
+  color: var(--texto-apagado);
+  display: block;
+  margin-bottom: .5rem;
+}
+footer a:hover{ color: var(--cyan); }
