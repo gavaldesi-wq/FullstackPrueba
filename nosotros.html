@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros | PC-SHOP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+ 
+  <nav class="navbar navbar-expand-lg navbar-dark barra-navegacion py-2">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="index.html">
+        <span class="texto-logo fs-4">PC<span class="destacado">-SHOP</span></span>
+        <span class="subtitulo-logo">PC COMPONENTS</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link enlace-nav" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link enlace-nav dropdown-toggle" href="productos.html" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+            <ul class="dropdown-menu menu-desplegable">
+              <li><a class="dropdown-item" href="productos.html#tarjetas-graficas">Tarjetas Gráficas</a></li>
+              <li><a class="dropdown-item" href="productos.html#procesadores">Procesadores</a></li>
+              <li><a class="dropdown-item" href="productos.html#memorias">Memorias</a></li>
+            </ul>
+          </li>
+
+          
+          <li class="nav-item"><a class="nav-link enlace-nav active" aria-current="page" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="contactos.html">Contacto</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center me-4 enlaces-usuario">
+          <a href="login.html" class="me-3">Iniciar sesión</a>
+          <a href="registro.html">Registrar usuario</a>
+        </div>
+
+        <form class="d-flex me-3" role="search">
+          <input class="form-control campo-busqueda me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+          <button class="btn boton-cyan" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+
+        <a href="#" class="enlace-carrito d-flex align-items-center">
+          <span class="position-relative me-1">
+            <i class="bi bi-cart3 fs-4"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"></span>
+          </span>
+          Carrito 
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  
+  <div class="container mt-4">
+    <h1 class="titulo-seccion">Sobre Nosotros</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <p class="texto-pagina fs-5">
+          PC-SHOP ES LA CUSPIDE DE LA INTELIGENCIA HUMANA HECHA PAGINA, EN ESTA FAKIN TIENDA
+          SE VENDE DE TODO PARA EL PC GEIMER QUE PRONTAMENTE CORRERA EL GTA 6.
+        </p>
+        <p class="texto-pagina">
+          Desde tarjetas gráficas hasta refrigeración líquida, seleccionamos
+          cada producto pensando en el rendimiento real que necesitas.
+        </p>
+      </div>
+    </div>
+
+ 
+    <h2 class="titulo-seccion">Nuestro Equipo</h2>
+    <div class="row g-4 mb-5 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="tarjeta-equipo">
+          
+          <p class="producto mb-0">Gabriel Valdes</p>
+          <p class="rol">Desarrollo FrontEnd</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="tarjeta-equipo">
+          <p class="producto mb-0"></p>
+          <p class="rol">Desarrollo JavaScript</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-6 col-lg-3">
+          <h6>Categorías</h6>
+          <a href="productos.html#tarjetas-graficas">Tarjetas Gráficas</a>
+          <a href="productos.html#memorias">Memorias</a>
+        </div>
+        <div class="col-6 col-md-6 col-lg-3">
+          <h6>&nbsp;</h6>
+          <a href="productos.html#procesadores">Procesadores</a>
+          <a href="#">Almacenamiento</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

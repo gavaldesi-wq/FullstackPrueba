@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | DUOC-WARE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ACA OCUPAMOS NAVAR PARA CREAR LA BARRA SUPERIOR Y LE AGREGAMOS LOS LINKS -->
+  <nav class="navbar navbar-expand-lg navbar-dark barra-navegacion py-2"> 
+        <div class="container-fluid">
+
+      <a class="navbar-brand" href="index.html">
+        <span class="texto-logo fs-4">PC<span class="destacado">-SHOP</span></span>
+        <span class="subtitulo-logo">PC COMPONENTS</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link enlace-nav" href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link enlace-nav dropdown-toggle" href="productos.html" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+            <ul class="dropdown-menu menu-desplegable">
+              <li><a class="dropdown-item" href="productos.html#tarjetas-graficas">Tarjetas Gráficas</a></li>
+              <li><a class="dropdown-item" href="productos.html#procesadores">Procesadores</a></li>
+              <li><a class="dropdown-item" href="productos.html#memorias">Memorias</a></li>
+            </ul>
+          </li>
+
+          
+          <li class="nav-item"><a class="nav-link enlace-nav "href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav active" aria-current="page" href="contacto.html">Contacto</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center me-4 enlaces-usuario">
+          <a href="login.html" class="me-3">Iniciar sesión</a>
+          <a href="registro.html">Registrar usuario</a>
+        </div>
+
+        <form class="d-flex me-3" role="search">
+          <input class="form-control campo-busqueda me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+          <button class="btn boton-cyan" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+
+        <a href="#" class="enlace-carrito d-flex align-items-center">
+          <span class="position-relative me-1">
+            <i class="bi bi-cart3 fs-4"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"></span>
+          </span>
+          Carrito 
+        </a>
+      </div>
+    </div>
+   </nav>
+
+    <!--CREACION DEL FAKIN FORMULARIO WUAJAJJAJAJA-->
+    <div class = "container">
+        <div class = "tarjeta-formulario">
+            <h2>Formulario de Contacto</h2>
+            <form id="form-contacto" novalidate>
+            <div class = "mb-3">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control campo-formulario" id="nombre" name="nombre" 
+                 placeholder="Maximo 100 caracteres" required>
+                <div class = "mensaje-error d-none" id = "error-nombre">El nombre es obligatorio.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control campo-formulario" id="correo" name="correo"
+                    placeholder="tunombre@duoc.cl">
+                <div class="mensaje-error d-none" id="error-correo">Solo se aceptan correos @duoc.cl, @profesor.duoc.cl o @gmail.com.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="comentario" class="form-label">Mensaje</label>
+                <textarea class="form-control campo-formulario" id="comentario" name="comentario"
+                    rows="5" placeholder="Máximo 500 caracteres"></textarea>
+                <div class="mensaje-error d-none" id="error-comentario">El mensaje es obligatorio.</div>
+            </div>
+            <button type = "submit" class = "btn boton-cyan w-100">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-6 col-lg-3">
+          <h6>Categorías</h6>
+          <a href="productos.html#tarjetas-graficas">Tarjetas Gráficas</a>
+          <a href="productos.html#memorias">Memorias</a>
+        </div>
+        <div class="col-6 col-md-6 col-lg-3">
+          <h6>&nbsp;</h6>
+          <a href="productos.html#procesadores">Procesadores</a>
+          <a href="productos.html#almacenamiento">Almacenamiento</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+<script src="js/contactoFormulario.js"></script>
+</body>
+</html>
