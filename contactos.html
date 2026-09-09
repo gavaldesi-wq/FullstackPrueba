@@ -28,28 +28,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link enlace-nav" href="index.html">Home</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link enlace-nav dropdown-toggle" href="#" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Productos
-            </a>
-            <ul class="dropdown-menu menu-desplegable">
-              <li><a class="dropdown-item" href="productos.html?categoria=tarjetas-graficas">Tarjetas Gráficas</a></li>
-              <li><a class="dropdown-item" href="productos.html?categoria=procesadores">Procesadores</a></li>
-              <li><a class="dropdown-item" href="productos.html?categoria=memorias">Memorias</a></li>
-              <li><a class="dropdown-item" href="productos.html?categoria=almacenamiento">Almacenamiento</a></li>
-            </ul>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link enlace-nav "  href="index.html">Home</a>
+            </li>
+            <li class = "nav-item"><a class = "nav-link enlace-nav" href="productos.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link enlace-nav" href="nosotros.html">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link enlace-nav" href="blog.html">Blogs</a></li>
+            <li class="nav-item"><a class="nav-link enlace-nav active" href="contactos.html">Contacto</a></li>
+          </ul>
 
           
-          <li class="nav-item"><a class="nav-link enlace-nav "href="nosotros.html">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link enlace-nav" href="blog.html">Blogs</a></li>
-          <li class="nav-item"><a class="nav-link enlace-nav active" aria-current="page" href="contactos.html">Contacto</a></li>
-        </ul>
 
         <div class="d-flex align-items-center me-4 enlaces-usuario">
           <a href="login.html" class="me-3">Iniciar sesión</a>
@@ -71,10 +59,10 @@
 
     <!--CREACION DEL FAKIN FORMULARIO WUAJAJJAJAJA-->
     <div class = "container">
-        <div class = "tarjeta-formulario">
+        <div class = "tarjeta-formulario p-3 mt-5">
             <h2>Formulario de Contacto</h2>
             <form id="form-contacto" novalidate>
-            <div class = "mb-3">
+            <div class = "mb-4">
                 <label for="nombre" class="form-label">Nombre completo</label>
                 <input type="text" class="form-control campo-formulario" id="nombre" name="nombre" 
                  placeholder="Maximo 100 caracteres" required>
@@ -102,15 +90,8 @@
     <footer class="py-5 mt-5">
     <div class="container">
       <div class="row">
-        <div class="col-6 col-md-6 col-lg-3">
-          <h6>Categorías</h6>
-          <a href="productos.html?categoria=tarjetas-graficas">Tarjetas Gráficas</a>
-          <a href="productos.html?categoria=memorias">Memorias</a>
-        </div>
-        <div class="col-6 col-md-6 col-lg-3">
-          <h6>&nbsp;</h6>
-          <a href="productos.html?categoria=procesadores">Procesadores</a>
-          <a href="productos.html?categoria=almacenamiento">Almacenamiento</a>
+        <div class="col-12 text-center">
+          <p class="mb-0">&copy; 2026 PC-SHOP. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>

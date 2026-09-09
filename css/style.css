@@ -217,3 +217,14 @@ footer a{
   margin-bottom: .5rem;
 }
 footer a:hover{ color: var(--cyan); }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* El elemento contenedor principal debe crecer para llenar el espacio */
+body > .container { 
+  flex-grow: 1;
+}
