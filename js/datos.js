@@ -1,6 +1,10 @@
 const productos = [
   {
     id: 1,
+    codigo: "GPU001",
+    categoria: "Tarjetas gráficas",
+    stock: 10,
+    stockCritico: 3,
     nombre: "ASUS ROG Strix GeForce RTX 4070 Ti OC Edition",
     marca: "ASUS",
     modelo: "RTX 4070 Ti",
@@ -16,6 +20,10 @@ const productos = [
   },
   {
     id: 2,
+    codigo: "CPU001",
+    categoria: "Procesadores",
+    stock: 8,
+    stockCritico: 2,
     nombre: "Intel Core i9-12900K Processor",
     marca: "Intel",
     modelo: "i9-12900K",
@@ -31,6 +39,10 @@ const productos = [
   },
   {
     id: 3,
+    codigo: "RAM001",
+    categoria: "Memorias RAM",
+    stock: 15,
+    stockCritico: 4,
     nombre: "Corsair Vengeance RGB DDR5 32GB",
     marca: "Corsair",
     modelo: "Vengeance RGB DDR5",
@@ -46,6 +58,10 @@ const productos = [
   },
   {
     id: 4,
+    codigo: "SSD001",
+    categoria: "Almacenamiento",
+    stock: 12,
+    stockCritico: 3,
     nombre: "Samsung 990 Pro 2TB NVMe SSD",
     marca: "Samsung",
     modelo: "990 Pro 2TB",
@@ -61,6 +77,10 @@ const productos = [
   },
   {
     id: 5,
+    codigo: "MB001",
+    categoria: "Placas madre",
+    stock: 6,
+    stockCritico: 2,
     nombre: "ASUS ROG Strix Z790-E Motherboard",
     marca: "ASUS",
     modelo: "Z790-E",
@@ -76,6 +96,10 @@ const productos = [
   },
   {
     id: 6,
+    codigo: "PSU001",
+    categoria: "Fuentes de poder",
+    stock: 10,
+    stockCritico: 3,
     nombre: "Corsair RM750 750W Power Supply",
     marca: "Corsair",
     modelo: "RM750",
@@ -91,6 +115,10 @@ const productos = [
   },
   {
     id: 7,
+    codigo: "REF001",
+    categoria: "Refrigeración",
+    stock: 7,
+    stockCritico: 2,
     nombre: "Corsair iCUE H100i Liquid Cooler",
     marca: "Corsair",
     modelo: "iCUE H100i",
@@ -106,6 +134,10 @@ const productos = [
   },
   {
     id: 8,
+    codigo: "REF002",
+    categoria:"Refrigeración",
+    stock: 20,
+    stockCritico: 5,
     nombre: "Corsair LL120 RGB Case Fans (3-Pack)",
     marca: "Corsair",
     modelo: "LL120 RGB",
