@@ -39,6 +39,7 @@ function agregarAlCarrito(idProducto, cantidad = 1) {
 }
 
 function mostrarCarrito() {
+  actualizarContadorCarrito();
   const contenedorCarrito = document.getElementById("contenedor-carrito");
   const totalCarrito = document.getElementById("total-carrito");
 
@@ -161,3 +162,19 @@ function cambiarCantidad(idProducto, nuevaCantidad) {
   mostrarCarrito();
 }
 mostrarCarrito();
+
+function actualizarContadorCarrito() {
+  const contador = document.getElementById("contador-carrito");
+
+  if (!contador) {
+    return;
+  }
+
+  let totalUnidades = 0;
+
+  carrito.forEach(function (item) {
+    totalUnidades += item.cantidad;
+  });
+
+  contador.textContent = totalUnidades;
+}
