@@ -51,7 +51,14 @@ if (productoEncontrado) {
           
           <hr class="border-secondary">
           
-          <button class="btn boton-cyan w-100 fw-bold py-2 mb-3 mt-2"><i class="bi bi-cart-plus me-2"></i>AÑADIR AL CARRITO</button>
+          <!-- id="btn-agregar-carrito": así lo podemos "agarrar" más
+               abajo con getElementById y ponerle su addEventListener,
+               ya que a diferencia de productos.html, acá SÍ podemos
+               usar un id normal (hay un solo botón de este tipo en
+               toda la página, no una lista repetida). -->
+          <button id="btn-agregar-carrito" class="btn boton-cyan w-100 fw-bold py-2 mb-3 mt-2">
+            <i class="bi bi-cart-plus me-2"></i>AÑADIR AL CARRITO
+          </button>
           
           <div class="d-flex align-items-center justify-content-between text-secondary" style="font-size: 0.85rem;">
             <span>Cantidad:</span>
@@ -81,6 +88,34 @@ if (productoEncontrado) {
       </div>
     </div>
   `;
+
+  
+  const botonAgregar = document.getElementById("btn-agregar-carrito");
+  const inputCantidad = document.getElementById("cantidad");
+
+  botonAgregar.addEventListener("click", function () {
+    
+    const cantidad = Number(inputCantidad.value) || 1;
+
+    agregarAlCarrito(
+      {
+        id: productoEncontrado.id,
+        nombre: productoEncontrado.nombre,
+        precio: productoEncontrado.precio,
+        imagen: productoEncontrado.imagen
+      },
+      cantidad
+    );
+
+    const textoOriginal = botonAgregar.innerHTML;
+    botonAgregar.innerHTML = "¡Agregado al carrito!";
+    botonAgregar.disabled = true;
+    setTimeout(function () {
+      botonAgregar.innerHTML = textoOriginal;
+      botonAgregar.disabled = false;
+    }, 1000);
+  });
+
 } else {
   contenedor.innerHTML = `
     <div class="col-12 text-center py-5">

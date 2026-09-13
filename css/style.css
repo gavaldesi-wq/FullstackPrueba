@@ -1,4 +1,3 @@
-
 :root{
   --fondo-principal:  #0a0e17; 
   --fondo-secundario: #0d1420; 
@@ -227,4 +226,124 @@ body {
 /* El elemento contenedor principal debe crecer para llenar el espacio */
 body > .container { 
   flex-grow: 1;
+}
+ 
+/* -----------------------------------------------------------
+   CARRITO DE COMPRAS
+----------------------------------------------------------- */
+.fila-carrito{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  border-radius: 10px;
+}
+.miniatura-carrito{
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  background: white;
+  border-radius: 8px;
+  padding: .3rem;
+}
+.resumen-carrito{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+ 
+/* -----------------------------------------------------------
+   FORMULARIOS (contacto, login, registro)
+----------------------------------------------------------- */
+.tarjeta-formulario{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 3rem auto;
+}
+.tarjeta-formulario h2{
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.campo-formulario{
+  background: var(--fondo-principal);
+  border: 1px solid var(--borde-cyan);
+  color: var(--texto-claro);
+  width: 100%;
+}
+.campo-formulario::placeholder{ color: var(--texto-apagado); }
+.campo-formulario:focus{
+  background: var(--fondo-principal);
+  color: var(--texto-claro);
+  box-shadow: 0 0 0 .2rem var(--cyan-brillo);
+  border-color: var(--cyan);
+}
+.mensaje-error{
+  color: #ff6b6b;
+  font-size: .8rem;
+  margin-top: .3rem;
+}
+.enlace-auth{
+  color: var(--texto-apagado);
+  text-align: center;
+  display: block;
+  margin-top: 1.5rem;
+  font-size: .9rem;
+}
+.enlace-auth a{ color: var(--cyan); }
+.enlace-auth a:hover{ text-decoration: underline; }
+ 
+ 
+/* -----------------------------------------------------------
+   PÁGINA "NOSOTROS"
+----------------------------------------------------------- */
+.texto-pagina{
+  color: var(--texto-apagado);
+  line-height: 1.7;
+}
+.tarjeta-equipo{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  border-radius: 10px;
+  text-align: center;
+  padding: 1.5rem;
+}
+.tarjeta-equipo img{
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--cyan);
+  margin-bottom: 1rem;
+}
+.tarjeta-equipo .rol{
+  color: var(--cyan);
+  font-size: .85rem;
+}
+ 
+ 
+/* -----------------------------------------------------------
+   PÁGINA "BLOG"
+----------------------------------------------------------- */
+.tarjeta-blog{
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-cyan);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tarjeta-blog img{
+  margin-top: 20px;
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+}
+.tarjeta-blog .contenido{
+  padding: 1.5rem;
+}
+.tarjeta-blog h3{
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
 }
