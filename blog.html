@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs | DUOC-WARE</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs | PC-SHOP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark barra-navegacion py-2"> 
-        <div class="container-fluid">
-
+  <nav class="navbar navbar-expand-lg navbar-dark barra-navegacion py-2">
+    <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
         <span class="texto-logo fs-4">PC<span class="destacado">-SHOP</span></span>
         <span class="subtitulo-logo">PC COMPONENTS</span>
@@ -23,83 +22,101 @@
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link enlace-nav "  href="index.html">Home</a>
-            </li>
-
-            <li class = "nav-item"><a class = "nav-link enlace-nav" href="productos.html">Productos</a></li>
-            <li class="nav-item"><a class="nav-link enlace-nav" href="nosotros.html">Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link enlace-nav active" aria-current="page" href="blog.html">Blogs</a></li>
-            <li class="nav-item"><a class="nav-link enlace-nav " href="contactos.html">Contacto</a></li>
-          </ul>
-
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link enlace-nav" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="productos.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav active" aria-current="page" href="blog.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="contactos.html">Contacto</a></li>
+        </ul>
 
         <div class="d-flex align-items-center me-4 enlaces-usuario">
           <a href="login.html" class="me-3">Iniciar sesión</a>
           <a href="registro.html">Registrar usuario</a>
         </div>
 
-
-
-        <a href="#" class="enlace-carrito d-flex align-items-center">
+        <a href="carrito.html" class="enlace-carrito d-flex align-items-center">
           <span class="position-relative me-1">
             <i class="bi bi-cart3 fs-4"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"></span>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill contador-carrito">0</span>
           </span>
-          Carrito 
+          
         </a>
       </div>
     </div>
-   </nav>
+  </nav>
 
-   <div class = "container mt-4">
-        <h1 class = "titulo-seccion">Noticias importantes</h1>
+  <div class="container mt-4">
+    <h1 class="titulo-seccion">Datos curiosos</h1>
 
-        <div class = "d-flex flex-column gap-4 mb-5" >
-            <!--EMPIEZA EL FAKIN DATO CURIOSO 1111111-->
-            <div class = "tarjeta-blog">
-                <div class = "row g-0">
-                    <div class = "col-12 col-md-5">
-                        <img src = "img/blogs/1.jpg" class = "img-fluid rounded-start" alt = "Imagen del blog 1">
-                    </div>
-                    <div class = "col-12 col-md-7 contenido">
-                        <h3>Dato curioso 1</h3>
-                        <p class = "texto-pagina">
-                            ¿Sabías que las primeras tarjetas gráficas dedicadas ni siquiera
-                            procesaban gráficos 3D? Te contamos cómo evolucionó el hardware
-                            gráfico hasta llegar a las GPU con trazado de rayos de hoy.
-                        </p>
-                        <a href="detalle-blog-1.html" class="btn boton-cyan">Ver Caso</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class = "tarjeta-blog">
-                <div class = "row g-0">
-                    <div class = "col-12 col-md-5">
-                        <img src = "img/blogs/2.jpg" class = "img-fluid rounded-start" alt = "Imagen del blog 2">
-                    </div>
-                    <div class = "col-12 col-md-7 contenido">
-                        <h3>Dato curioso 2</h3>
-                        <p class = "texto-pagina">
-                            ¿Sabías que los procesadores modernos tienen múltiples núcleos
-                            para mejorar el rendimiento? Descubre cómo la arquitectura de
-                            los procesadores ha evolucionado a lo largo de los años.
-                        </p>
-                        <a href="detalle-blog-2.html" class="btn boton-cyan">Ver Caso</a>
-                    </div>
-                </div>
-            </div>
-
-
-
-
+    <div class="d-flex flex-column gap-4 mb-5">
+      <div class="tarjeta-blog">
+        <div class="row g-0">
+          <div class="col-12 col-md-5">
+            <img src="img/80.jpg" class="img-fluid rounded-start" alt="Imagen del blog 1">
+          </div>
+          <div class="col-12 col-md-7 contenido">
+            <h3>Dato curioso 1</h3>
+            <p class="texto-pagina">
+              ¿Sabías que las primeras tarjetas gráficas dedicadas ni siquiera
+              procesaban gráficos 3D? Las primeras tarjetas gráficas de los años 80 
+              solo mostraban texto plano, dejando todo el procesamiento pesado a la CPU 
+              de la computadora. La llegada de los videojuegos tridimensionales en los 
+              años 90 impulsó la creación de aceleradores 3D y la primera GPU en 1999, 
+              revolucionando el rendimiento gráfico. Hoy en día, esta tecnología ha 
+              evolucionado para incluir Inteligencia Artificial y Trazado de Rayos, 
+              simulando la física de la luz en tiempo real y alcanzando un realismo fotográfico.
+            </p>
+          </div>
         </div>
-   </div>
-   
-   <footer class="py-5 mt-5">
+      </div>
+
+      <div class="d-flex flex-column gap-4 mb-5">
+      <div class="tarjeta-blog">
+        <div class="row g-0">
+          <div class="col-12 col-md-5">
+            <img src="img/discoviejo.jpg" class="img-fluid rounded-start" alt="Imagen del blog 1">
+          </div>
+          <div class="col-12 col-md-7 contenido">
+            <h3>Dato curioso 2</h3>
+            <p class="texto-pagina">
+              ¿Sabías que los primeros discos duros del tamaño de un 
+              refrigerador solo podían guardar 5 megabytes de datos?
+              El primer disco duro de 1956 pesaba más de una tonelada con una capacidad de solo 5 megabytes,
+              mientras que los modernos discos SSD actuales son ultrarrápidos, no tienen
+              piezas móviles y almacenan millones de archivos en un tamaño mínimo. Para continuar 
+              explorando datos curiosos sobre tecnología, puedes elegir entre analizar cómo funcionan
+              las pantallas táctiles de los celulares, el origen de la primera red de internet o el 
+              funcionamiento de las tarjetas de memoria sin energía.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="tarjeta-blog">
+        <div class="row g-0">
+          <div class="col-12 col-md-5">
+            <img src="img/cpum.jpg" class="img-fluid rounded-start" alt="Imagen del blog 2">
+          </div>
+          <div class="col-12 col-md-7 contenido">
+            <h3>Dato curioso 3</h3>
+            <p class="texto-pagina">
+              ¿Sabías que los procesadores modernos tienen múltiples núcleos
+              para mejorar el rendimiento? Los primeros procesadores de un solo núcleo llegaron a 
+              un límite de sobrecalentamiento, lo que llevó a los fabricantes a introducir 
+              los chips multinúcleo en 2005 para realizar tareas simultáneas de forma eficiente. Actualmente, 
+              la evolución de este diseño ha derivado en una arquitectura híbrida que combina núcleos de alto 
+              rendimiento con otros de bajo consumo para optimizar la batería.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="py-5 mt-5">
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
@@ -108,5 +125,7 @@
       </div>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/carrito.js"></script>
 </body>
 </html>
