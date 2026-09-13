@@ -51,7 +51,13 @@ if (productoEncontrado) {
           
           <hr class="border-secondary">
           
-          <button class="btn boton-cyan w-100 fw-bold py-2 mb-3 mt-2"><i class="bi bi-cart-plus me-2"></i>AÑADIR AL CARRITO</button>
+          <button
+            type="button"
+            id="boton-agregar-carrito"
+            class="btn boton-cyan w-100 fw-bold py-2 mb-3 mt-2">
+            <i class="bi bi-cart-plus me-2"></i>
+            AÑADIR AL CARRITO
+            </button>
           
           <div class="d-flex align-items-center justify-content-between text-secondary" style="font-size: 0.85rem;">
             <span>Cantidad:</span>
@@ -81,6 +87,14 @@ if (productoEncontrado) {
       </div>
     </div>
   `;
+  const botonAgregar = document.getElementById("boton-agregar-carrito");
+  const campoCantidad = document.getElementById("cantidad");
+
+  botonAgregar.addEventListener("click", function(){
+    const cantidad = Number(campoCantidad.value);
+
+    agregarAlCarrito(productoEncontrado.id, cantidad);
+  });
 } else {
   contenedor.innerHTML = `
     <div class="col-12 text-center py-5">
