@@ -72,6 +72,24 @@ function mostrarCarrito() {
     resumen.className = "mb-0";
     resumen.textContent =
       `Cantidad: ${item.cantidad} | Subtotal: $${subtotal.toLocaleString("es-CL")}`;
+      const etiquetaCantidad = document.createElement("label");
+ etiquetaCantidad.htmlFor = `cantidad-carrito-${item.id}`;
+etiquetaCantidad.className = "form-label mt-2";
+etiquetaCantidad.textContent = "Cantidad:";
+
+const campoCantidad = document.createElement("input");
+campoCantidad.type = "number";
+campoCantidad.id = `cantidad-carrito-${item.id}`;
+campoCantidad.min = "1";
+campoCantidad.max = String(producto.stock);
+campoCantidad.step = "1";
+campoCantidad.value = item.cantidad;
+campoCantidad.className = "form-control w-auto";
+
+campoCantidad.addEventListener("change", function () {
+  const nuevaCantidad = Number(campoCantidad.value);
+  cambiarCantidad(item.id, nuevaCantidad);
+});
 
     const botonEliminar = document.createElement("button");
 botonEliminar.type = "button";
@@ -82,7 +100,13 @@ botonEliminar.addEventListener("click", function () {
   eliminarDelCarrito(item.id);
 });
 
-fila.append(nombre, resumen, botonEliminar);
+fila.append(
+  nombre,
+  resumen,
+  etiquetaCantidad,
+  campoCantidad,
+  botonEliminar
+);
 contenedorCarrito.append(fila);
   });
 
@@ -102,6 +126,36 @@ function eliminarDelCarrito(idProducto) {
   }
 
   carrito.splice(indice, 1);
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  mostrarCarrito();
+}
+function cambiarCantidad(idProducto, nuevaCantidad) {
+  const producto = productos.find(function (producto) {
+    return producto.id === idProducto;
+  });
+
+  const item = carrito.find(function (item) {
+    return item.id === idProducto;
+  });
+
+  if (!producto || !item) {
+    return;
+  }
+
+  if (!Number.isInteger(nuevaCantidad) || nuevaCantidad <= 0) {
+    alert("Ingresa una cantidad entera mayor que cero.");
+    mostrarCarrito();
+    return;
+  }
+
+  if (nuevaCantidad > producto.stock) {
+    alert("La cantidad solicitada supera el stock disponible.");
+    mostrarCarrito();
+    return;
+  }
+
+  item.cantidad = nuevaCantidad;
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
   mostrarCarrito();
