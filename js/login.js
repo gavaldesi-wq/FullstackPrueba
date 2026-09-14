@@ -77,6 +77,7 @@ formularioLogin.addEventListener("submit", async function (evento) {
   mensajeLogin.textContent = "Comprobando datos…";
 
   try {
+    await crearAdministradorInicial();
     const cuentas = leerCuentas();
 
     const usuario = cuentas.find(function (cuenta) {

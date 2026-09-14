@@ -63,3 +63,58 @@ function leerCuentas() {
 
   return lista;
 }
+
+// Crea un administrador inicial para las demostraciones.
+// Solo se crea si todavía no existe.
+async function crearAdministradorInicial() {
+  const cuentas = leerCuentas();
+
+  const correoAdmin = "admin@duoc.cl";
+
+  // Revisamos si el administrador ya existe.
+  const existeAdmin = cuentas.some(function (usuario) {
+    return usuario.correo.toLowerCase() === correoAdmin;
+  });
+ 
+  if (existeAdmin) {
+    return;
+  }
+
+  // Contraseña que utilizaremos para entrar como administrador.
+  const contrasena = "admin123";
+
+  // Creamos la sal y la huella igual que en el registro normal.
+  const sal = crearSal();
+  const contrasenaHash = await generarHuella(contrasena, sal);
+
+  const administrador = {
+    id: Math.max(
+      0,
+      ...cuentas.map(function (usuario) {
+        return usuario.id;
+      })
+    ) + 1,
+
+    run: "123456785",
+    nombre: "Administrador",
+    apellidos: "PC-SHOP",
+    correo: correoAdmin,
+    fechaNacimiento: "2000-01-01",
+    region: "Región Metropolitana de Santiago",
+    comuna: "Santiago",
+    direccion: "PC-SHOP",
+    tipo: "Administrador",
+
+    sal: sal,
+    contrasenaHash: contrasenaHash
+  };
+
+  cuentas.push(administrador);
+
+  localStorage.setItem(
+    "pcshop-usuarios",
+    JSON.stringify(cuentas)
+  );
+
+  console.log("Administrador inicial creado.");
+}
