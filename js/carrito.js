@@ -20,27 +20,76 @@ function guardarCarrito(carrito) {
 // 3) Función para meter cosas al carrito.
 // Si el producto ya estaba, solo le suma la cantidad. Si es nuevo, lo agrega al final.
 function agregarAlCarrito(producto, cantidad) {
+  if (!Number.isInteger(cantidad) || cantidad <= 0) {
+    alert("Ingresa una cantidad entera mayor que cero.");
+    return false;
+  }
+
+  const productoActual = cargarProductos().find(function (item) {
+    return item.id === producto.id;
+  });
+
+  if (!productoActual) {
+    alert("Este producto ya no está disponible.");
+    return false;
+  }
+
   const carrito = obtenerCarrito();
 
   const itemExistente = carrito.find(function (item) {
     return item.id === producto.id;
   });
 
+  const cantidadActual = itemExistente ? itemExistente.cantidad : 0;
+
+  if (cantidadActual + cantidad > productoActual.stock) {
+    alert("La cantidad solicitada supera el stock disponible.");
+    return false;
+  }
+
   if (itemExistente) {
     itemExistente.cantidad += cantidad;
+    itemExistente.precio = productoActual.precio;
   } else {
-    carrito.push({ ...producto, cantidad: cantidad });
+    carrito.push({
+      id: productoActual.id,
+      nombre: productoActual.nombre,
+      precio: productoActual.precio,
+      imagen: productoActual.imagen,
+      cantidad: cantidad
+    });
   }
+
   guardarCarrito(carrito);
+  return true;
 }
 
 
 // 4) Cambiar la cantidad de un producto.
 // Si le ponen menos de 1, mejor lo borramos del carrito para que no quede en cero.
 function cambiarCantidad(id, nuevaCantidad) {
-  if (nuevaCantidad < 1) {
+  if (!Number.isInteger(nuevaCantidad) || nuevaCantidad < 0) {
+    alert("La cantidad debe ser un número entero mayor o igual a cero.");
+    return false;
+  }
+
+  if (nuevaCantidad === 0) {
     eliminarDelCarrito(id);
-    return;
+    return true;
+  }
+
+  const producto = cargarProductos().find(function (item) {
+    return item.id === id;
+  });
+
+  if (!producto) {
+    alert("Este producto ya no está disponible. Elimínalo del carrito.");
+    return false;
+  }
+
+  if (nuevaCantidad > producto.stock) {
+    alert("La cantidad solicitada supera el stock disponible.");
+    return false;
   }
 
   const carrito = obtenerCarrito();
@@ -48,10 +97,15 @@ function cambiarCantidad(id, nuevaCantidad) {
     return item.id === id;
   });
 
-  if (item) {
-    item.cantidad = nuevaCantidad;
-    guardarCarrito(carrito);
+  if (!item) {
+    return false;
   }
+
+  item.cantidad = nuevaCantidad;
+  item.precio = producto.precio;
+
+  guardarCarrito(carrito);
+  return true;
 }
 
 

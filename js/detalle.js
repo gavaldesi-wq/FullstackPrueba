@@ -93,11 +93,10 @@ if (productoEncontrado) {
   const botonAgregar = document.getElementById("btn-agregar-carrito");
   const inputCantidad = document.getElementById("cantidad");
 
-  botonAgregar.addEventListener("click", function () {
-    
-    const cantidad = Number(inputCantidad.value) || 1;
+    botonAgregar.addEventListener("click", function () {
+    const cantidad = Number(inputCantidad.value);
 
-    agregarAlCarrito(
+    const agregado = agregarAlCarrito(
       {
         id: productoEncontrado.id,
         nombre: productoEncontrado.nombre,
@@ -107,9 +106,14 @@ if (productoEncontrado) {
       cantidad
     );
 
+    if (!agregado) {
+      return;
+    }
+
     const textoOriginal = botonAgregar.innerHTML;
-    botonAgregar.innerHTML = "¡Agregado al carrito!";
+    botonAgregar.textContent = "¡Agregado al carrito!";
     botonAgregar.disabled = true;
+
     setTimeout(function () {
       botonAgregar.innerHTML = textoOriginal;
       botonAgregar.disabled = false;
