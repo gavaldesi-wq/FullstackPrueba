@@ -1,5 +1,3 @@
-
-
 const gridDestacados = document.getElementById("grid-destacados");
 
 gridDestacados.addEventListener("click", function (evento) {
@@ -7,19 +5,29 @@ gridDestacados.addEventListener("click", function (evento) {
   if (!boton) return;
 
   const id = Number(boton.dataset.id);
+
   const producto = productos.find(function (p) {
     return p.id === id;
   });
+
   if (!producto) return;
 
-  agregarAlCarrito(
-    { id: producto.id, nombre: producto.nombre, precio: producto.precio, imagen: producto.imagen },
+  const agregado = agregarAlCarrito(
+    {
+      id: producto.id,
+      nombre: producto.nombre,
+      precio: producto.precio,
+      imagen: producto.imagen
+    },
     1
   );
+
+  if (!agregado) return;
 
   const textoOriginal = boton.textContent;
   boton.textContent = "¡Agregado!";
   boton.disabled = true;
+
   setTimeout(function () {
     boton.textContent = textoOriginal;
     boton.disabled = false;
