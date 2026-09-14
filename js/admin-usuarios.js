@@ -1,3 +1,5 @@
+if (exigirAdministrador()) {
+
 const CLAVE_USUARIOS = "pcshop-usuarios";
 const formularioUsuario = document.getElementById("form-usuario");
 const mensajeUsuario = document.getElementById("mensaje-usuario");
@@ -286,3 +288,4 @@ document.getElementById("limpiar-usuario")
   .addEventListener("click", limpiarFormularioUsuario);
 
 mostrarUsuariosAdmin();
+}
