@@ -1,4 +1,4 @@
-const productos = [
+const productosIniciales = [
   {
     id: 1,
     codigo: "GPU001",
@@ -152,3 +152,29 @@ const productos = [
     ]
   }
 ];
+
+const CLAVE_PRODUCTOS = "pcshop-productos";
+
+function cargarProductos() {
+  try {
+    const datosGuardados = localStorage.getItem(CLAVE_PRODUCTOS);
+
+    if (datosGuardados !== null) {
+      const lista = JSON.parse(datosGuardados);
+
+      if (Array.isArray(lista)) {
+        return lista;
+      }
+    }
+  } catch (error) {
+    console.error("No se pudieron cargar los productos guardados.", error);
+  }
+
+  return structuredClone(productosIniciales);
+}
+
+const productos = cargarProductos();
+
+function guardarProductos() {
+  localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productos));
+}
