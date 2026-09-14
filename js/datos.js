@@ -152,9 +152,10 @@ const productosIniciales = [
     ]
   }
 ];
-
+// Nombre de la clave utilizada para guardar y recuperar
+// los productos desde el almacenamiento local del navegador.
 const CLAVE_PRODUCTOS = "pcshop-productos";
-
+// FUNCIÓN PARA CARGAR LOS PRODUCTOS
 function cargarProductos() {
   try {
     const datosGuardados = localStorage.getItem(CLAVE_PRODUCTOS);
@@ -169,12 +170,21 @@ function cargarProductos() {
   } catch (error) {
     console.error("No se pudieron cargar los productos guardados.", error);
   }
+   // Si no existen productos guardados o los datos son inválidos,
+  // se genera una copia independiente de los productos iniciales.
+  //
+  // structuredClone evita modificar accidentalmente
+  // el arreglo productosIniciales.
 
   return structuredClone(productosIniciales);
 }
-
+// Se ejecuta cargarProductos() al iniciar la página.
+// Si existen productos guardados, se utilizan esos.
+// De lo contrario, se cargan los productos iniciales.
 const productos = cargarProductos();
 
 function guardarProductos() {
+  // JSON.stringify convierte el arreglo de productos
+  // en texto JSON para poder almacenarlo en localStorage.
   localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productos));
 }
