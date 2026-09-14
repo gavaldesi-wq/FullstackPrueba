@@ -1,3 +1,5 @@
+if (exigirAdministrador()) {
+
 function mostrarProductosAdmin() {
     const tabla = document.getElementById("tabla-productos");
     const resumen = document.getElementById("resumen-productos");
@@ -250,4 +252,5 @@ function cargarProductoEnFormulario(idProducto) {
     });
 
     document.getElementById("producto-nombre").focus();
+}
 }
