@@ -157,7 +157,17 @@ a{ text-decoration: none; }
   box-shadow: 0 0 20px var(--cyan-brillo);
 }
 
+.tarjeta-blog img {
+  border-right: 2px solid var(--cyan); /* Borde cyan que separa la foto del texto */
+}
 
+/* En celulares (pantallas pequeñas) el borde pasa a estar abajo */
+@media (max-width: 767.98px) {
+  .tarjeta-blog img {
+    border-right: none;
+    border-bottom: 2px solid var(--cyan);
+  }
+}
 /* Productos Destacados */
 .titulo-seccion{
   font-family: 'Orbitron', sans-serif;
