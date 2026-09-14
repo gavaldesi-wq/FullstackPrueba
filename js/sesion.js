@@ -69,6 +69,6 @@ function exigirAdministrador() {
     window.location.replace("index.html");
     return false;
   }
-
+  document.body.hidden = false;
   return true;
 }
