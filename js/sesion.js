@@ -45,6 +45,14 @@ function mostrarSesion() {
       contenedor.append(enlaceAdmin);
     }
 
+    if (usuario.tipo === "Vendedor") {
+      const enlaceVentas = document.createElement("a");
+      enlaceVentas.href = "vendedor.html";
+      enlaceVentas.className = "me-3";
+      enlaceVentas.textContent = "Consultas de ventas";
+      contenedor.append(enlaceVentas);
+    }
+
     const botonSalir = document.createElement("button");
     botonSalir.type = "button";
     botonSalir.className = "btn btn-outline-light btn-sm";
@@ -69,6 +77,23 @@ function exigirAdministrador() {
     window.location.replace("index.html");
     return false;
   }
+  document.body.hidden = false;
+  return true;
+}
+
+function exigirPersonal() {
+  const usuario = obtenerUsuarioActual();
+
+  if (!usuario) {
+    window.location.replace("login.html");
+    return false;
+  }
+
+  if (!["Administrador", "Vendedor"].includes(usuario.tipo)) {
+    window.location.replace("index.html");
+    return false;
+  }
+
   document.body.hidden = false;
   return true;
 }

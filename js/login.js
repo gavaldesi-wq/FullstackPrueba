@@ -108,9 +108,13 @@ formularioLogin.addEventListener("submit", async function (evento) {
       JSON.stringify({ id: usuario.id })
     );
 
-    window.location.href = usuario.tipo === "Administrador"
-      ? "admin.html"
-      : "index.html";
+    if (usuario.tipo === "Administrador") {
+  window.location.href = "admin.html";
+} else if (usuario.tipo === "Vendedor") {
+  window.location.href = "vendedor.html";
+} else {
+  window.location.href = "index.html";
+}
   } catch (error) {
     console.error("No se pudo iniciar sesión.", error);
     mensajeLogin.className = "mt-3 text-warning";
