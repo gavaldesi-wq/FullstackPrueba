@@ -20,27 +20,76 @@ function guardarCarrito(carrito) {
 // 3) Función para meter cosas al carrito.
 // Si el producto ya estaba, solo le suma la cantidad. Si es nuevo, lo agrega al final.
 function agregarAlCarrito(producto, cantidad) {
+  if (!Number.isInteger(cantidad) || cantidad <= 0) {
+    alert("Ingresa una cantidad entera mayor que cero.");
+    return false;
+  }
+
+  const productoActual = cargarProductos().find(function (item) {
+    return item.id === producto.id;
+  });
+
+  if (!productoActual) {
+    alert("Este producto ya no está disponible.");
+    return false;
+  }
+
   const carrito = obtenerCarrito();
 
   const itemExistente = carrito.find(function (item) {
     return item.id === producto.id;
   });
 
+  const cantidadActual = itemExistente ? itemExistente.cantidad : 0;
+
+  if (cantidadActual + cantidad > productoActual.stock) {
+    alert("La cantidad solicitada supera el stock disponible.");
+    return false;
+  }
+
   if (itemExistente) {
     itemExistente.cantidad += cantidad;
+    itemExistente.precio = productoActual.precio;
   } else {
-    carrito.push({ ...producto, cantidad: cantidad });
+    carrito.push({
+      id: productoActual.id,
+      nombre: productoActual.nombre,
+      precio: productoActual.precio,
+      imagen: productoActual.imagen,
+      cantidad: cantidad
+    });
   }
+
   guardarCarrito(carrito);
+  return true;
 }
 
 
 // 4) Cambiar la cantidad de un producto.
 // Si le ponen menos de 1, mejor lo borramos del carrito para que no quede en cero.
 function cambiarCantidad(id, nuevaCantidad) {
-  if (nuevaCantidad < 1) {
+  if (!Number.isInteger(nuevaCantidad) || nuevaCantidad < 0) {
+    alert("La cantidad debe ser un número entero mayor o igual a cero.");
+    return false;
+  }
+
+  if (nuevaCantidad === 0) {
     eliminarDelCarrito(id);
-    return;
+    return true;
+  }
+
+  const producto = cargarProductos().find(function (item) {
+    return item.id === id;
+  });
+
+  if (!producto) {
+    alert("Este producto ya no está disponible. Elimínalo del carrito.");
+    return false;
+  }
+
+  if (nuevaCantidad > producto.stock) {
+    alert("La cantidad solicitada supera el stock disponible.");
+    return false;
   }
 
   const carrito = obtenerCarrito();
@@ -48,10 +97,15 @@ function cambiarCantidad(id, nuevaCantidad) {
     return item.id === id;
   });
 
-  if (item) {
-    item.cantidad = nuevaCantidad;
-    guardarCarrito(carrito);
+  if (!item) {
+    return false;
   }
+
+  item.cantidad = nuevaCantidad;
+  item.precio = producto.precio;
+
+  guardarCarrito(carrito);
+  return true;
 }
 
 
@@ -180,14 +234,127 @@ document.addEventListener("click", function (evento) {
 });
 
 
-// 10) Simular que pagas. Solo tira una alerta y borra el carrito.
 function pagarCarrito() {
-  const carrito = obtenerCarrito();
-  if (carrito.length === 0) return;
+  const usuario = obtenerUsuarioActual();
 
-  alert("¡Gracias por tu compra! Total pagado: $" + calcularTotalDinero(carrito).toLocaleString("es-CL"));
-  guardarCarrito([]); 
-  renderizarPaginaCarrito();
+  if (!usuario) {
+    alert("Inicia sesión para confirmar tu pedido.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+    const carrito = obtenerCarrito();
+
+    if (!Array.isArray(carrito) || carrito.length === 0) {
+      return;
+    }
+
+    const catalogo = cargarProductos();
+    const cantidades = new Map();
+
+    carrito.forEach(function (item) {
+      if (!Number.isInteger(item.cantidad) || item.cantidad <= 0) {
+        throw new Error("El carrito contiene una cantidad inválida.");
+      }
+
+      cantidades.set(
+        item.id,
+        (cantidades.get(item.id) || 0) + item.cantidad
+      );
+    });
+
+    const detalle = [];
+
+    cantidades.forEach(function (cantidad, id) {
+      const producto = catalogo.find(function (producto) {
+        return producto.id === id;
+      });
+
+      if (!producto) {
+        throw new Error("Un producto del carrito ya no está disponible.");
+      }
+
+      if (
+        !Number.isInteger(producto.stock) ||
+        cantidad > producto.stock
+      ) {
+        throw new Error(`Stock insuficiente para ${producto.nombre}.`);
+      }
+
+      if (!Number.isFinite(producto.precio) || producto.precio < 0) {
+        throw new Error(`El precio de ${producto.nombre} no es válido.`);
+      }
+
+      detalle.push({
+        id: producto.id,
+        codigo: producto.codigo,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: cantidad,
+        subtotal: producto.precio * cantidad
+      });
+    });
+
+    const total = detalle.reduce(function (suma, item) {
+      return suma + item.subtotal;
+    }, 0);
+
+    if (!Number.isFinite(total)) {
+      throw new Error("No se pudo calcular el total del pedido.");
+    }
+
+    const acepta = confirm(
+      "¿Confirmar pedido de demostración por $" +
+      total.toLocaleString("es-CL") +
+      "? No se realizará ningún cobro."
+    );
+
+    if (!acepta) {
+      return;
+    }
+
+    const textoOrdenes = localStorage.getItem("pcshop-ordenes");
+    const ordenes = textoOrdenes === null ? [] : JSON.parse(textoOrdenes);
+
+    if (!Array.isArray(ordenes)) {
+      throw new Error("No se pudo leer el listado de órdenes.");
+    }
+
+    const orden = {
+      id: crypto.randomUUID(),
+      fecha: new Date().toISOString(),
+      usuarioId: usuario.id,
+      cliente: `${usuario.nombre} ${usuario.apellidos}`,
+      correo: usuario.correo,
+      direccion: usuario.direccion,
+      region: usuario.region,
+      comuna: usuario.comuna,
+      estado: "Pendiente",
+      detalle: detalle,
+      total: total
+    };
+
+    ordenes.push(orden);
+    localStorage.setItem("pcshop-ordenes", JSON.stringify(ordenes));
+
+    // La orden ya está guardada. Intentamos limpiar el carrito.
+    try {
+      guardarCarrito([]);
+      renderizarPaginaCarrito();
+    } catch (error) {
+      alert(
+        "El pedido quedó registrado, pero no se pudo vaciar el carrito. " +
+        "No vuelvas a confirmarlo."
+      );
+      return;
+    }
+
+    alert("Pedido registrado correctamente. No se realizó ningún cobro.");
+  } catch (error) {
+    console.error("No se pudo registrar el pedido.", error);
+    alert(error.message || "No se pudo registrar el pedido.");
+  }
 }
 
 
